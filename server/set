@@ -1,0 +1,10 @@
+npm run migrate -- --rebuild
+
+lb4 controller
+lb4 repository
+lb datasource datasource
+lb model
+lb4 relation
+npm run build
+npm run migrate
+lb4 app

@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.form-layout {
+    @apply px-4 pb-4 gap-4 grid md:grid-cols-2 grid-cols-1 ;
+
+}
+
+.single-grid-col {
+  @apply md:grid-cols-1 !important
+}
+
+.modal {
+  @apply z-40;
+}
+
+.toast {
+  @apply z-50;
+}
+
+.btn-sidemenu {
+  @apply btn-ghost rounded-none font-normal truncate text-start;
+}
+
+.input-bordered:disabled, .btn:disabled {
+  @apply border-opacity-10 border-base-content;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track { 
+  background: theme('colors.base-300' / 0.5) ; 
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+
+  background: theme('colors.base-content'); 
+  border-radius: 10px;
+}
+
+.transparent-scrollbar::-webkit-scrollbar-thumb {
+  background: theme('colors.base-content' / 0.6);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.primary'); 
+}
+
+.visible-i {
+  display: flex ;
+}
+
+[data-editing="true"] .instrument.hasTocador{
+  @apply outline-pink-300 !important;  
+}
+
+[data-editing="true"] .instrument:active,[data-editing="true"] .instrument:focus, [data-editing="true"] .active.instrument, 
+.palco-tocador .instrument:active,.palco-tocador .instrument:focus { 
+  @apply outline-dashed outline-1 outline-base-content outline-offset-2 
+}
+
+
+[data-editing="false"] .instrument {
+  @apply outline-none ;
+}
