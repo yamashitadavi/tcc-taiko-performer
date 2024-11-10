@@ -24,8 +24,6 @@
 	export let data : any
 	
 	async function rowAction({ detail } : any) {
-		//delete
-		console.log(detail)
 		let { action, index } = detail
 		if (action == 'delete') {
 			loading = true

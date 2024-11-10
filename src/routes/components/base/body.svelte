@@ -37,9 +37,6 @@
             {#each routes as { route, label, svg } (route)}
             <li>
                 <a href={route} class:active={$page.url.pathname.split('/')[1] == route.split('/')[1]}>
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                    d={svg} ></svg> -->
                     <svelte:component this={svg.cmp} className={svg.class}></svelte:component>
                 {label}
                 </a>

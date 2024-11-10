@@ -7,7 +7,7 @@
     export let searchKey = 'nome';
     export let valueKey = 'id';
     export let url: string = '';
-    export let value : any = { label: '', value: '' }; //{ label, value }
+    export let value : any = { label: '', value: '' };
     export let condition : any = {};
     export let exclude: any = [];
     export let data: any|undefined = undefined;
@@ -16,7 +16,7 @@
     export let required : boolean = false;
     export let disabled : boolean = false;
     export let clearable : boolean = false;
-    export let uniqueLabel : boolean = false; //values are going to be accumulated in a single option
+    export let uniqueLabel : boolean = false;
     export let uniqueSeparator : string = ';';
     export let size : string = 'md';
     export let additionalFields : any = {}
@@ -60,11 +60,8 @@
     $: (() => { 
         if (hasExclude(value.value)) clearValue()
         
-        //if (!value.value) searchSelection = ''
     })()
-    // $: (() =>{
-    //     currentSelected = searchSelection = value?.label ?? '';
-    // })()
+
 
     const dispatch = createEventDispatcher()    
 
@@ -124,40 +121,6 @@
     onMount(async() => {
         if (!data) await loadData(true);    
     })
-
-    /*function handleInput() {
-
-        clearTimeout(myTimeout);
-        if (isEmptyOrWhitespace(searchSelection) || searchSelection.length < 3) {
-            list = [];
-            return
-        }
-        
-        if (searching = !oldSearchSelection.startsWith(searchSelection)) {
-            myTimeout = setTimeout(async () => {
-
-                try {
-                    let filters: any = { where: {}, fields: {}, limit: 100 };
-                    filters.where[searchKey] = { like: `%${searchSelection}%` };                
-                    filters.fields[valueKey] = filters.fields[searchKey] = true;
-
-                    let { response } = await getTable(url, filters, fetch);
-                    oldSearchSelection = searchSelection;
-                    list = response;
-                    console.log("Dados recebidos:", response);
-                } catch (error) {
-                    console.error("Erro ao buscar dados:", error);
-                }
-                
-                searching = false; 
-            }, 400);
-            return
-        }
-
-        oldSearchSelection = searchSelection;
-        list = list.filter((e : any)=>(e[searchKey] ?? '').toLowerCase().includes(searchSelection.toLowerCase()))
-
-    }*/
 
 </script>
 

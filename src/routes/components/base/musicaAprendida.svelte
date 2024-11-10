@@ -11,7 +11,7 @@
 
     export let musicaId : number;
     export let instrMus : any;
-    export let tocadorInstr : any = {} //tocadorId : {value: { instrMuId: musicaApreId }, label : 'tocador'}
+    export let tocadorInstr : any = {} 
     export let disabled : boolean = false;
 
     export let searchTocadores : string = ''
@@ -22,7 +22,7 @@
     let instrumento : any = {},
     tocador : any = {},
     tocadorFilter : any = '',
-    displayList : any = [], //id: tocadorId, label: tocador.nome, value: Map<inMusLabel, [{ inMusId, musAprId }]>, dispaly
+    displayList : any = [], 
     displayExpand : any = {},
     clearInsValue : any,
     instrMusMap : any;
@@ -70,12 +70,6 @@
     })()
     
     async function addRelation() {
-        //save new musica-aprendida(tocadorId, instrumentoMusicaId, musicaId)
-        //clear instrumentoMusica selecionado
-        //adiciona a lista de exclusao
-
-        //identify multiples value in
-
         let responses = (await Promise.all(( typeof instrumento.value == 'string' ? instrumento.value.split(';').map(Number) : [ instrumento.value ]).map((e : any)=> 
         upsertTable('/musica-aprendida', new MusicaAprendida({ musicaId, tocadorId: tocador.value, instrumentoMusicaId: e }), fetch))))
 
@@ -109,7 +103,6 @@
 
 <div class="md:form-control md:flex-row h-full overflow-y-auto">
     <menu class="form-control gap-4 basis-1/4 bg-base-200 p-4 pb-6 shadow-md md:border-r md:border-r-neutral ">
-        <!-- <h1 class="text-xl">Tocadores</h1> -->
         <SearchDropdown label="Tocadores" className="w-full" url="/tocadores" clearable bind:searchSelection={searchTocadores} bind:value={tocador} {disabled} />
         <SearchDropdown label="Instrumentos" className="w-full" url="/instrumento-musica" condition={{terTocador: true, musicaId}} uniqueLabel 
         bind:reload={reloadTocador} bind:value={instrumento} bind:clearValue={clearInsValue} 
@@ -157,4 +150,3 @@
         </div>
     </div>
 </div>
-<!-- <button class="absolute bottom-0">Voltar ao Começo</button> -->

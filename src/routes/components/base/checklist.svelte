@@ -13,8 +13,8 @@
     export let relationFilter : any;
     export let relatedObject : string;
     export let relationUrl : string;
-    export let deletedRelations : any = [] // valueKey
-    export let valueRelations : any = {} //relationKey : relatedObject{}
+    export let deletedRelations : any = [] 
+    export let valueRelations : any = {}
     export const setValue : Function = (val : any) => {
         value = val;
         handleInput()

@@ -3,8 +3,6 @@ import { translateError } from './errorHandler';
 
 type FetchFunction = (url: string, options?: RequestInit) => Promise<Response>;
 
-//implementa a mensagem de erro direito filho
-
 export async function getTable(dir : string, filter : object, fetch : FetchFunction) {
     try {
         const response = await fetch(`${config.request_url}${dir}?filter=` +
@@ -85,30 +83,4 @@ export async function deleteRowTable(dir : string, fetch : FetchFunction, id : u
     return state
 
 }
-
-/*export async function createFile(dir : string, body : any, fetch : Function, id? : any) {
-    let state = { ok: false, message: '', body : { id: '' } }
-
-    try {
-        let response = await fetch(`${config.request_url}${dir}${id ? '/' + id : ''}`,
-            {
-                method: id != undefined ? 'PATCH' : 'POST',
-
-                body: body 
-            }
-        )
-        console.log(response)
-        if (!(state.ok = response.ok)) {
-            let {error} = await response.json()
-            console.log(error)
-            state.message = translateError(error, dir)
-        }
-
-        if (response.status != 204)
-        state.body = await response.json();
-    } catch (e : any) {
-        dispatchEvent(new CustomEvent('modal-error', {detail: {title : 'Erro', body: e}}))
-    }
-    return state;
-} */
 

@@ -17,12 +17,8 @@ export function formatDate(dt : any) {
 }
 
 export function formatDateTime(dt: any) {
-    //convert dt to current timezone 
+
     dt = new Date(dt)
-
-    // const [y,m,d, h, min, s] = dt.split('T')[0].split('-').concat(dt.replace('.000Z', '').split('T')[1].split(':'))
-    // return `${d}/${m}/${y} ${h}:${min}:${s}`;
-
     return dt.toLocaleString();
 }
 

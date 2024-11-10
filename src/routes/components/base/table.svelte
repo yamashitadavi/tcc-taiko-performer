@@ -9,22 +9,7 @@
 		attrClass? : string
 		urlLabel? : string
 		svg? : any
-		
-		/*constructor(
-			label : string,
-			value : string,
-			type? : string,
-			attrClass? : string,
-			urlLabel? : string,
-			svg? : any
-		) {
-			this.label = label
-			this.value = value
-			if (type) this.type = type
-			if (attrClass) this.attrClass = attrClass
-			if (urlLabel) this.urlLabel = urlLabel
-			if (svg) this.svg = svg
-		}*/
+
 		constructor(obj : Partial<Column>) {
 			Object.assign(this, obj)
 		}
@@ -44,13 +29,9 @@
 
 <div class="overflow-auto {className}">
 	<table class="table">
-		<!-- head -->
 		<thead>
 			<tr>
 				<th>
-				 <!-- <label>
-					<input type="checkbox" class="checkbox" />
-				</label>  -->
 				</th> 
 				{#each columns as { label, value } (value)}
 				<th data-value={value}>
@@ -64,9 +45,6 @@
 		{#each rows as row, i (row[key])}
 			<tr>
 				<th>
-					<!-- <label>
-					<input type="checkbox" class="checkbox" />
-					</label> -->
 					{i+1}
 				</th>
 				

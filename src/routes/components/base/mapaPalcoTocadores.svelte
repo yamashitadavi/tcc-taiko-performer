@@ -14,27 +14,14 @@
 	export let apresentacao : any = {}
 	export let tocadores : any = []
 	export let loading : boolean
-
-	//checklist não está atualizando a lista de tocadores - done
-	//deselect index de instrumento quando troca de musica - done
-	//remover tocador se estiver em outro instrumento e for selecionado - done
-	//imagem não atualiza quando troca sem salvar
-
-	//salvar em hierarquia e adicionar os ids aos objetos relacionados
-	/** [{ musicaApre: MusicaApresentacao, tocadores: {instrumentoMId: TocadorMusica}, instrumentos: instrumentoMusica[] }] */
 	export let musApreJunct : any = [] 
 	export let toDelete : any = {}
-	
-	//query tocadores que sabem no botão e filtrar na lista de seleção
 
 	console.log('musApreJunct', JSON.stringify(musApreJunct))
 
 	let mapTocadores : any = {},
 	
 	instrMus : Array<InstrumentoMusica> = []
-	// width : any,
-	// height : any,
-	// espaco : any
 
 	let offsetX : any, offsetY: any,
 	dKeyX : any, dKeyY : any,
@@ -51,7 +38,6 @@
 	musicaAddDisabled : boolean,
 	clearMusicaVal : Function,
 	draggingIndex : any,
-	//musApreJunct : any, //point ->tocadores
 	selectedMusica : any,
 	tocadorSearch : any,
 	clearTocadorVal : Function,
@@ -88,9 +74,6 @@
 	}
 
 	$: selectedJunct = musApreJunct[selectedMusica]
-
-	//limpar valor do instrumento quando trocado de música
-	//
 
 	$: (()=>{
 		if (selectedJunct) {
@@ -211,7 +194,6 @@
 
 	async function addMusica() {
 		musicaAddDisabled = true;
-		//add music
 
 		let mus = {...musicaSearch}
 		delete mus.label
@@ -261,8 +243,8 @@
 		if (draggingIndex === null) return;
 
 		const draggedItem = musApreJunct[draggingIndex];
-		musApreJunct = musApreJunct.filter((e : any, i : any) => i !== draggingIndex); // Remove the dragged item
-		musApreJunct.splice(idx, 0, draggedItem); // Insert it in the new position
+		musApreJunct = musApreJunct.filter((e : any, i : any) => i !== draggingIndex); 
+		musApreJunct.splice(idx, 0, draggedItem);
 
 		if (idx == selectedMusica || draggingIndex > selectedMusica)
 		selectedMusica = selectedMusica+1
@@ -271,10 +253,6 @@
 	}		
 
 	function setTocador(e : any) {
-		// if mapTocador[e.detail.value]
-		
-		// selectedJunct.tocadores[selectedJunct.instrumentos[selectedInstrumento].id] =
-		// new TocadorMusica({ musicaApresentacaoId: selectedJunct.musicaApre.id|undefined -> set on save, instrumentoMusicaId: selectedJunct.instrumentos[selectedInstrumento].id, tocadorId: e.detal.value, tocador: mapTocador[e.detail.value] })
 		const tocs = musApreJunct[selectedMusica].tocadores, 
 		instrumentoId = musApreJunct[selectedMusica].instrumentos[selectedInstrumento].id
 
@@ -288,13 +266,11 @@
 		new TocadorMusica({ musicaApresentacaoId: musApreJunct[selectedMusica].musicaApre.id, instrumentoMusicaId: instrumentoId, tocadorId: e.detail.value.id, tocador: mapTocadores[e.detail.value.id] });
 
 		musApreJunct = musApreJunct
-		// clearTocadorVal && clearTocadorVal()
 		
 	}
 
 	function removeTocador(insId : any, idx : any) {
-		// if (selectedJunct.tocadores[insId].id) then selectedJunct.toDelete.push() 
-		// selectedJunct.tocadores[insId] = undefined
+
 		if (selectedJunct.tocadores[insId]?.id) {
 			if (!selectedJunct.toDelete) selectedJunct.toDelete = []
 			selectedJunct.toDelete.push(selectedJunct.tocadores[insId]) 
@@ -367,10 +343,6 @@
 		showToast('Seleção automática', 'Realizado com sucesso', ToastType.success)
 		loading = false
 	}
-
-	//fazer delete de tocadores que são removidos da música
-	//fazer delete de música antes dos tocadores
-
 
 	function loadTocadorInfo(ins : any) {
 		
@@ -510,10 +482,7 @@ on:keyup={(e)=>{ if (e.key == 'Enter') selectedInstrumento = undefined}}>
 			{/each}
 		</svg>
 	</div>
-	<!-- on:keyup|stopPropagation={(e) => {
-		if (e.key == 'Delete' && selectedInstrumentor != null && !((musApreJunct[selectedMusica].tocadores[ins.id] ?? {}).tocador?.nome == undefined || !editing))
-		removeTocador(ins.id, i)
-	}} -->
+
 	<menu class="h-full flex relative select-none flex-col overflow-auto bg-base-200"  style:width={menu2.width+'px'} >
 		<div class="form-control h-full max-h-full w-full max-w-full p-0 py-2">
 			<div class="form-control flex-shrink-0 grow-0 px-2 gap-4" >

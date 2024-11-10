@@ -44,7 +44,6 @@
 		});
 		dataPalco = data.response.instrumentosMusica.map((e : any) => new InstrumentoMusica(e)),
 		dataInstrumento = Object.values(instrumentoInstance),
-		//data.response.instrumentos.map((e : any) => new Instrumento(e)),
 		musica = new Musica(data.response.musica),
 		toDelete = []
 	}

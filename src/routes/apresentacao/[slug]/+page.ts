@@ -9,7 +9,6 @@ export const load : PageLoad = async ({params, fetch}) => {
     const [ apresentacao, musicaApresentacao ] = (await Promise.all([
         getTable('/apresentacoes/'+params.slug, {}, fetch),
         getTable('/musica-apresentacao', {
-            // fields: { id: true, ordem: true, musicaId: true, musicaApresentacaoId: true },
             include: [
                 { relation: 'musica' }
             ],
@@ -55,7 +54,6 @@ export const load : PageLoad = async ({params, fetch}) => {
     })
     
     if (ok) {
-        //musicaId: [instrumentoMusica]
         console.log('ok',instrumentosMus)
         const musicaInstrumentos = instrumentosMus.reduce((acc : any, e : any) => {
             console.log(e)

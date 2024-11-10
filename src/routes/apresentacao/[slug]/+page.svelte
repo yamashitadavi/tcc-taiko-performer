@@ -133,8 +133,7 @@
 </script>
 <Body>
     <FormApresentacao data={apresentacao} bind:loading={loading} bind:writing={writing} on:success={onSuccess} on:cancel={onCancel}>
-        <!--to fix: on save list is undefined-->
-        
+
         <Checklist label="Checklist Tocadores" url="/tocadores" relationUrl="/tocador-apresentacao" 
         relatedObject="tocador" readonly={!writing} 
         

@@ -20,7 +20,6 @@
 	export let data : any
 	
 	async function rowAction({ detail } : any) {
-		//delete
 		console.log(detail)
 		let { action, index } = detail
 		if (action == 'delete') {
@@ -47,7 +46,6 @@
 
 		<FormMusica data={formData} on:success={(e)=>{
 			modalCreate = false
-			//window.location = (window.location+'/'+e.detail.record.id)
 		}}/>
 
 	  	<div class="modal-action justify-start mt-auto pt-1">

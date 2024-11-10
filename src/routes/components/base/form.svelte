@@ -73,5 +73,4 @@ async function enhanceFunc({ formData, cancel, submitter } : any) {
 <form bind:this={form} class="{borderless ? '' : 'h-full'} overflow-auto flex flex-col" {enctype} method="POST" use:enhance={enhanceFunc} on:keypress={(e) => {
     if (e.key == 'Enter' && disableEnter) e.preventDefault() }}>
     <slot/>
-    <!-- <button class="" type="submit">Submit</button> -->
 </form>
